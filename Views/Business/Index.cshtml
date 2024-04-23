@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li><a href="@Url.Action("Details", "Business")">Places</a></li>
+            <li><a href="@Url.Action("Index", "Business")">Timings and Price</a></li>
+            <li><a href="@Url.Action("About", "Home")">About Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1>Business Details</h1>
+    <section id="business-details">
+        <!-- Business details table will be dynamically generated here -->
+    </section>
+</main>
+
+<footer>
+    <p>&copy; @DateTime.Now.Year Local Business Directory</p>
+</footer>

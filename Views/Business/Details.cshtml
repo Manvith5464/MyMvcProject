@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li><a href="@Url.Action("Details", "Business")">Places</a></li>
+            <li><a href="@Url.Action("Index", "Business")">Timings and Price</a></li>
+            <li><a href="@Url.Action("About", "Home")">About Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="main-heading">
+        <h1>Places to Visit in Tampa</h1>
+    </section>
+    <section>
+        <h2>Places</h2>
+        <div id="business-list">
+            <!-- Dynamically populated list of businesses -->
+        </div>
+    </section>
+</main>

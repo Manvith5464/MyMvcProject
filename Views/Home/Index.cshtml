@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li><a href="@Url.Action("Details", "Business")">Places</a></li>
+            <li><a href="@Url.Action("Index", "Business")">Timings and Price</a></li>
+            <li><a href="@Url.Action("About", "Home")">About Us</a></li>
+        </ul>
+    </nav>
+    <div class="header-image">
+        <img src="https://orlandoinformer.com/wp-content/uploads/2023/09/Cheetah-Hunt-BGTB.jpg" alt="USF">
+    </div>
+</header>
+
+<main>
+    <h1>Bull's Guide to Tampa</h1>
+    <p>Embark on a journey around the University of South Florida. Discover the best places to eat, play, and relax.</p>
+</main>
+
+<footer>
+    <p>&copy; @DateTime.Now.Year Bull's Guide to Tampa</p>
+</footer>

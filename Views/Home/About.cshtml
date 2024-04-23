@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li><a href="@Url.Action("Details", "Business")">Places</a></li>
+            <li><a href="@Url.Action("Index", "Business")">Timings and Price</a></li>
+            <li><a href="@Url.Action("About", "Home")" class="active">About Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="about-us">
+        <h1>About Us</h1>
+        <div class="team-member">
+            <img src="Rithika.jpg" alt="Rithika Kandimalla" class="team-photo">
+            <div class="team-info">
+                <h3>Rithinka Kandimalla</h3>
+                <p>Worked making the website responsive, integrating CRUD operations, and handling dynamic data loading.</p>
+                <a href="https://github.com/RithikaKandimalla" class="github-link">GitHub</a>
+            </div>
+        </div>
+    </section>
+</main>
