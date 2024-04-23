@@ -1,51 +1,46 @@
-﻿using System.Web.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MyMvcProject.Models;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json;
 using System.IO;
-using System.Web.Hosting;
+using Microsoft.AspNetCore.Hosting;
+using System.Linq;
 
 namespace MyMvcProject.Controllers
 {
     public class BusinessController : Controller
     {
-        private static List<Place> _places;
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        private List<Place> _places;
 
-        public BusinessController()
+        public BusinessController(IWebHostEnvironment hostingEnvironment)
         {
-            // Initialize the places list by loading it from the JSON file
-            if (_places == null)
-            {
-                LoadPlacesFromJson();
-            }
+            _hostingEnvironment = hostingEnvironment;
+            LoadPlacesFromJson();
         }
 
         private void LoadPlacesFromJson()
         {
-            // Path to the JSON file
-            string path = HostingEnvironment.MapPath("~/App_Data/data.json");
-            using (StreamReader reader = new StreamReader(path))
-            {
-                string json = reader.ReadToEnd();
-                _places = JsonConvert.DeserializeObject<List<Place>>(json);
-            }
+            string contentRootPath = _hostingEnvironment.ContentRootPath;
+            string jsonFilePath = Path.Combine(contentRootPath, "App_Data", "data.json");
+            string json = System.IO.File.ReadAllText(jsonFilePath);
+            _places = JsonSerializer.Deserialize<List<Place>>(json);
         }
 
-        // GET: Business
-        public ActionResult Index()
+        public IActionResult Index()
         {
-            return View(_places); // Passes the list of places to the View located at ~/Views/Business/Index.cshtml
+            return View(_places); // Serves the ~/Views/Business/Index.cshtml view with places list
         }
 
-        // GET: Business/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Details(int id)
         {
-            var place = _places.Find(p => p.BusinessId == id);
+            var place = _places.FirstOrDefault(p => p.BusinessId == id);
             if (place == null)
             {
-                return HttpNotFound();  // Returns a standard 404 Not Found response if no place is found
+                return NotFound();  // Returns a 404 Not Found response if no place is found
             }
-            return View(place);  // Passes the found place to the View located at ~/Views/Business/Details.cshtml
+            return View(place);  // Serves the ~/Views/Business/Details.cshtml view with a single place
         }
     }
 }
+

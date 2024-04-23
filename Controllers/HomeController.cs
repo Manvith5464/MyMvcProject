@@ -1,19 +1,35 @@
-using System.Web.Mvc;
 
+
+using Microsoft.AspNetCore.Mvc;
+ 
 namespace MyMvcProject.Controllers
+
 {
+
     public class HomeController : Controller
+
     {
-        // GET: Home
-        public ActionResult Index()
+
+        // GET: /
+
+        public IActionResult Index()
+
         {
-            return View(); // Returns the View located at ~/Views/Home/Index.cshtml
+
+            return View(); // Corresponds to the view in Views/Home/Index.cshtml
+
         }
 
-        // GET: Home/About
-        public ActionResult About()
+        // GET: /Home/About
+
+        public IActionResult About()
+
         {
-            return View(); // Returns the View located at ~/Views/Home/About.cshtml
+
+            return View(); // Corresponds to the view in Views/Home/About.cshtml
+
         }
+
     }
+
 }
